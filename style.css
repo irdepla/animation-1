@@ -4,9 +4,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Initial gradient */
-  background-size: 200% 200%; /* Adjusted background size */
-  animation: gradientShift 15s ease infinite; /* Smoother and slower animation */
+  background: linear-gradient(135deg, #1e3c72, #2a5298);  
+  background-size: 200% 200%; 
+  animation: gradientShift 15s ease infinite; 
   perspective: 1000px;
 }
 
