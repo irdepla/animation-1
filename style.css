@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72, #2a5298); /* Initial gradient */
+  background-size: 200% 200%; /* Adjusted background size */
+  animation: gradientShift 15s ease infinite; /* Smoother and slower animation */
+  perspective: 1000px;
+}
+
+.prism-container {
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.prism {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  transform: rotateX(20deg) rotateY(20deg);
+  animation: morph 8s infinite alternate ease-in-out, rotatePrism 10s infinite linear;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
+}
+
+.face {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #1e90ff, #ff6347);
+  opacity: 0.9;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  transition: background 0.5s;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.front  { transform: translateZ(100px); }
+.back   { transform: rotateY(180deg) translateZ(100px); }
+.left   { transform: rotateY(-90deg) translateZ(100px); }
+.right  { transform: rotateY(90deg) translateZ(100px); }
+.top    { transform: rotateX(90deg) translateZ(100px); }
+.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+@keyframes rotatePrism {
+  0% { transform: rotateX(20deg) rotateY(20deg); }
+  100% { transform: rotateX(380deg) rotateY(380deg); }
+}
+
+@keyframes morph {
+  0%, 100% { transform: scale(1) rotateX(20deg) rotateY(20deg); }
+  25% { transform: scale(1.2) rotateX(120deg) rotateY(180deg); }
+  50% { transform: scale(1.5) rotateX(240deg) rotateY(360deg); }
+  75% { transform: scale(1.3) rotateX(120deg) rotateY(180deg); }
+}
+
+.prism:hover {
+  animation-play-state: paused;
+  transform: scale(1.1) rotateX(30deg) rotateY(30deg);
+  transition: transform 0.3s;
+}
+
+body:hover .face {
+  background: linear-gradient(45deg, #ff1493, #32cd32);
+  transition: background 0.5s ease-in-out;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
